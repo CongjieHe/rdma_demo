@@ -122,7 +122,7 @@ static int post_send(struct resources *res, int opcode) {
   }
 
 
-  /* there is a Receive Request in the responder side,
+  /* there is a Send Request in the responder side,
    * so we won't get any into RNR flow */
   rc = ibv_post_send(res->qp, &sr, &bad_wr);
   if (rc)
