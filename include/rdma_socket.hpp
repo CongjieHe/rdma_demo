@@ -5,12 +5,12 @@
 #ifndef RDMA_TEST_INCLUDE_RDMA_SOCKET_H_
 #define RDMA_TEST_INCLUDE_RDMA_SOCKET_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <unistd.h>
-#include <stdint.h>
-#include <inttypes.h>
+#include <cstdint>
+#include <cinttypes>
 
 #include <sys/time.h>
 #include <arpa/inet.h>
@@ -41,7 +41,7 @@
 *
 ******************************************************************************/
 static int sock_connect(const char *servername, int port) {
-  struct addrinfo *resolved_addr = NULL;
+  addrinfo *resolved_addr = nullptr;
   char service[6];
   int sockfd = -1;
   int listenfd = 0;
@@ -59,7 +59,7 @@ static int sock_connect(const char *servername, int port) {
     goto sock_connect_exit;
   }
   /* Search through results and find the one we want */
-  for (struct addrinfo *iterator = resolved_addr; iterator; iterator = iterator->ai_next) {
+  for (auto iterator = resolved_addr; iterator; iterator = iterator->ai_next) {
     sockfd = socket(iterator->ai_family, iterator->ai_socktype, iterator->ai_protocol);
     if (sockfd >= 0) {
       if (servername) {
@@ -76,7 +76,7 @@ static int sock_connect(const char *servername, int port) {
         if (bind(listenfd, iterator->ai_addr, iterator->ai_addrlen))
           goto sock_connect_exit;
         listen(listenfd, 1);
-        sockfd = accept(listenfd, NULL, NULL);
+        sockfd = accept(listenfd, nullptr, nullptr);
       }
     }
   }

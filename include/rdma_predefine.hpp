@@ -5,7 +5,7 @@
 #ifndef RDMA_TEST_INCLUDE_RDMA_PREDEFINE_H_
 #define RDMA_TEST_INCLUDE_RDMA_PREDEFINE_H_
 
-#include <stdint.h>
+#include <cstdint>
 #include <byteswap.h>
 
 const char msg[] = "";

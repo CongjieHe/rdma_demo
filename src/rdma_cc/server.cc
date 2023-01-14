@@ -2,10 +2,10 @@
 // Created by wangxinshuo on 2020/11/7.
 //
 
-#include "rdma_structure.h"
-#include "rdma_resource.h"
-#include "rdma_poll.h"
-#include "rdma_connect.h"
+#include "rdma_structure.hpp"
+#include "rdma_resource.hpp"
+#include "rdma_poll.hpp"
+#include "rdma_connect.hpp"
 
 #include <chrono>
 #include <thread>

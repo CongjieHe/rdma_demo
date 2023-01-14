@@ -4,6 +4,11 @@
         "__config": "c",
         "__nullptr": "c",
         "socket.h": "c",
-        "netdb.h": "c"
+        "netdb.h": "c",
+        "cstdio": "cpp",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "rdma_socket.h": "c",
+        "verbs.h": "c"
     }
 }

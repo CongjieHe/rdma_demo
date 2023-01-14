@@ -64,7 +64,7 @@ int main() {
   }
 
   /* after polling the completion we have the message in the client buffer too */
-  strcpy(res.buf, RDMAMSGR);
+  // strcpy(res.buf, RDMAMSGR);
 
   /* 进行同步，因此我们确保服务器端在客户端尝试读取数据之前已准备好数据 */
   /* 只是来回发送一个虚拟字符 */
