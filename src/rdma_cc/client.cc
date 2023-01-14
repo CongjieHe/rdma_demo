@@ -2,11 +2,19 @@
 // Created by wangxinshuo on 2020/11/7.
 //
 
+<<<<<<< HEAD
 #include "rdma_predefine.hpp"
 #include "rdma_structure.hpp"
 #include "rdma_resource.hpp"
 #include "rdma_poll.hpp"
 #include "rdma_connect.hpp"
+=======
+#include "rdma_predefine.h"
+#include "rdma_structure.h"
+#include "rdma_resource.h"
+#include "rdma_poll.h"
+#include "rdma_connect.h"
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
 #include <string>
 

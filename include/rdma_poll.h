@@ -8,12 +8,21 @@
 #include "rdma_predefine.h"
 #include "rdma_structure.h"
 
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdint.h>
 #include <inttypes.h>
+=======
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <unistd.h>
+#include <cstdint>
+#include <cinttypes>
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
 #include <sys/time.h>
 #include <arpa/inet.h>
@@ -39,20 +48,35 @@
 *
 ******************************************************************************/
 static int poll_completion(struct resources *res) {
+<<<<<<< HEAD
   struct ibv_wc wc;
   unsigned long start_time_msec;
   unsigned long cur_time_msec;
   struct timeval cur_time;
+=======
+  ibv_wc wc{};
+  unsigned long start_time_msec;
+  unsigned long cur_time_msec;
+  timeval cur_time{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   int poll_result;
   int rc = 0;
 
 
   /* poll the completion for a while before giving up of doing it .. */
+<<<<<<< HEAD
   gettimeofday(&cur_time, NULL);
   start_time_msec = (cur_time.tv_sec * 1000) + (cur_time.tv_usec / 1000);
   do {
     poll_result = ibv_poll_cq(res->cq, 1, &wc);
     gettimeofday(&cur_time, NULL);
+=======
+  gettimeofday(&cur_time, nullptr);
+  start_time_msec = (cur_time.tv_sec * 1000) + (cur_time.tv_usec / 1000);
+  do {
+    poll_result = ibv_poll_cq(res->cq, 1, &wc);
+    gettimeofday(&cur_time, nullptr);
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
     cur_time_msec = (cur_time.tv_sec * 1000) + (cur_time.tv_usec / 1000);
   } while ((poll_result == 0) && ((cur_time_msec - start_time_msec) < kMaxPollCqTimeout));
 
@@ -110,11 +134,19 @@ static int post_send(struct resources *res, int opcode) {
 
   /* prepare the send work request */
   memset(&sr, 0, sizeof(sr));
+<<<<<<< HEAD
   sr.next = NULL;
   sr.wr_id = 0;
   sr.sg_list = &sge;
   sr.num_sge = 1;
   sr.opcode = opcode;
+=======
+  sr.next = nullptr;
+  sr.wr_id = 0;
+  sr.sg_list = &sge;
+  sr.num_sge = 1;
+  sr.opcode = static_cast<ibv_wr_opcode>(opcode);
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   sr.send_flags = IBV_SEND_SIGNALED;
   if (opcode != IBV_WR_SEND) {
     sr.wr.rdma.remote_addr = res->remote_props.addr;
@@ -122,7 +154,11 @@ static int post_send(struct resources *res, int opcode) {
   }
 
 
+<<<<<<< HEAD
   /* there is a Send Request in the responder side,
+=======
+  /* there is a Receive Request in the responder side,
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
    * so we won't get any into RNR flow */
   rc = ibv_post_send(res->qp, &sr, &bad_wr);
   if (rc)
@@ -162,8 +198,13 @@ static int post_send(struct resources *res, int opcode) {
 *
 ******************************************************************************/
 static int post_receive(struct resources *res) {
+<<<<<<< HEAD
   struct ibv_recv_wr rr;
   struct ibv_sge sge;
+=======
+  ibv_recv_wr rr{};
+  ibv_sge sge{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   struct ibv_recv_wr *bad_wr;
   int rc;
 
@@ -175,7 +216,11 @@ static int post_receive(struct resources *res) {
 
   /* prepare the receive work request */
   memset(&rr, 0, sizeof(rr));
+<<<<<<< HEAD
   rr.next = NULL;
+=======
+  rr.next = nullptr;
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   rr.wr_id = 0;
   rr.sg_list = &sge;
   rr.num_sge = 1;

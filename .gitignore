@@ -53,5 +53,9 @@ dkms.conf
 
 # IDEA
 .idea
+<<<<<<< HEAD
 cmake-build-debug
 build/
+=======
+cmake-build-debug
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd

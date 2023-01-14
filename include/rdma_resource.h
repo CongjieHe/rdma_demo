@@ -77,47 +77,7 @@ static int resources_create(struct resources *res, struct config_t *config) {
     fprintf(stdout, "waiting on port %d for TCP connection\n", config->tcp_port);
     res->sock = sock_connect(NULL, config->tcp_port);
     if (res->sock < 0) {
-      fprintf(stderr, "failed to establish TCP connection with client on port %d\n",
-              config->tcp_port);
-      rc = -1;
-      goto resources_create_exit;
-    }
-  }
-  fprintf(stdout, "TCP connection was established\n");
-  fprintf(stdout, "searching for IB devices in host\n");
-
-  // TODO：GET IB DEVICES
-  /* get device names in the system */
-  dev_list = ibv_get_device_list(&num_devices);
-  if (!dev_list) {
-    fprintf(stderr, "failed to get IB devices list\n");
-    rc = 1;
-    goto resources_create_exit;
-  }
-  /* if there isn't any IB device in host */
-  if (!num_devices) {
-    fprintf(stderr, "found %d device(s)\n", num_devices);
-    rc = 1;
-    goto resources_create_exit;
-  }
-  fprintf(stdout, "found %d device(s)\n", num_devices);
-  /* search for the specific device we want to work with */
-  for (i = 0; i < num_devices; i++) {
-    if (!config->dev_name) {
-      config->dev_name = strdup(ibv_get_device_name(dev_list[i]));
-      fprintf(stdout, "device not specified, using first one found: %s\n",
-              config->dev_name);
-    }
-    if (!strcmp(ibv_get_device_name(dev_list[i]), config->dev_name)) {
-      ib_dev = dev_list[i];
-      break;
-    }
-  }
-  /* if the device wasn't found in host */
   if (!ib_dev) {
-    fprintf(stderr, "IB device %s wasn't found\n", config->dev_name);
-    rc = 1;
-    goto resources_create_exit;
   }
 
   // TODO：GET IB CONTEXT

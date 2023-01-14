@@ -39,7 +39,11 @@
 * Transition a QP from the RESET to INIT state
 ******************************************************************************/
 static int modify_qp_to_init(struct ibv_qp *qp, struct config_t *config) {
+<<<<<<< HEAD
   struct ibv_qp_attr attr;
+=======
+  ibv_qp_attr attr{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   int flags;
   int rc;
 
@@ -76,7 +80,11 @@ static int modify_qp_to_init(struct ibv_qp *qp, struct config_t *config) {
 ******************************************************************************/
 static int modify_qp_to_rtr(struct ibv_qp *qp, uint32_t remote_qpn,
                             uint16_t dlid, uint8_t *dgid, struct config_t *config) {
+<<<<<<< HEAD
   struct ibv_qp_attr attr;
+=======
+  ibv_qp_attr attr{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   int flags;
   int rc;
   memset(&attr, 0, sizeof(attr));
@@ -124,7 +132,11 @@ static int modify_qp_to_rtr(struct ibv_qp *qp, uint32_t remote_qpn,
 * Transition a QP from the RTR to RTS state
 ******************************************************************************/
 static int modify_qp_to_rts(struct ibv_qp *qp) {
+<<<<<<< HEAD
   struct ibv_qp_attr attr;
+=======
+  ibv_qp_attr attr{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
   int flags;
   int rc;
   memset(&attr, 0, sizeof(attr));
@@ -158,12 +170,21 @@ static int modify_qp_to_rts(struct ibv_qp *qp) {
 * Connect the QP. Transition the server side to RTR, sender side to RTS
 ******************************************************************************/
 static int connect_qp(struct resources *res, struct config_t *config) {
+<<<<<<< HEAD
   struct cm_con_data_t local_con_data;
   struct cm_con_data_t remote_con_data;
   struct cm_con_data_t tmp_con_data;
   int rc = 0;
   char temp_char;
   union ibv_gid my_gid;
+=======
+  cm_con_data_t local_con_data{};
+  cm_con_data_t remote_con_data{};
+  cm_con_data_t tmp_con_data{};
+  int rc = 0;
+  char temp_char;
+  ibv_gid my_gid{};
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
   // TODO: GET GID
   if (config->gid_idx >= 0) {
@@ -174,7 +195,11 @@ static int connect_qp(struct resources *res, struct config_t *config) {
       return rc;
     }
   } else
+<<<<<<< HEAD
     memset(&my_gid, 0, sizeof(my_gid));
+=======
+    memset(&my_gid, 0, sizeof my_gid);
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
 
   /* exchange using TCP sockets info required to connect QPs */

@@ -90,7 +90,11 @@ int main() {
 
   fprintf(stdout, "Contents of server's buffer: '%s'\n", res.buf);
   /* Now we replace what's in the server's buffer */
+<<<<<<< HEAD
   // strcpy(res.buf, RDMAMSGW);
+=======
+  strcpy(res.buf, RDMAMSGW);
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
   fprintf(stdout, "Now replacing it with: '%s'\n", res.buf);
   if (post_send(&res, IBV_WR_RDMA_WRITE)) {

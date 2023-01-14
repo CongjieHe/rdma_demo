@@ -64,7 +64,11 @@ int main() {
   }
 
   /* after polling the completion we have the message in the client buffer too */
+<<<<<<< HEAD
   // strcpy(res.buf, RDMAMSGR);
+=======
+  strcpy(res.buf, RDMAMSGR);
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
   /* 进行同步，因此我们确保服务器端在客户端尝试读取数据之前已准备好数据 */
   /* 只是来回发送一个虚拟字符 */

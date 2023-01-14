@@ -7,7 +7,11 @@
 
 #include "rdma_structure.h"
 
+<<<<<<< HEAD
 #include <stdint.h>
+=======
+#include <cstdio>
+>>>>>>> 0e0992a012c0911bb5008d41f572f1ab49323ebd
 
 /******************************************************************************
 * Function: print_config
